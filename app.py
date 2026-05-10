@@ -6,8 +6,7 @@ from pathlib import Path
 st.set_page_config(page_title="Medical No Show Dashboard", layout="wide")
 st.markdown("<h1 style='text-align: center; color: #12355B;'>🏥 Medical Appointment No-Show Dashboard</h1>",unsafe_allow_html=True)
 
-st.markdown("<p style='text-align: center; color: gray;'>Interactive dashboard for analyzing patient attendance behavior</p>",unsafe_allow_html=True
-
+st.markdown("<p style='text-align: center; color: gray;'>Interactive dashboard for analyzing patient attendance behavior</p>",unsafe_allow_html=True)
 BASE_DIR = Path(__file__).resolve().parent
 DATA_PATH = BASE_DIR / "KaggleV2-May-2016.csv"
 
