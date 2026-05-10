@@ -64,10 +64,38 @@ st.markdown("<h2 style='color:#12355B;'>📌 Key Metrics</h2>",unsafe_allow_html
 
 kpi1, kpi2, kpi3, kpi4 = st.columns(4)
 
-kpi1.metric("Total Appointments", total_appointments)
-kpi2.metric("Show Count", show_count)
-kpi3.metric("No-Show Count", no_show_count)
-kpi4.metric("No-Show Rate", f"{no_show_rate}%")
+with kpi1:
+    st.markdown(f"""
+    <div class="metric-card">
+        <div class="metric-label">Total Appointments</div>
+        <div class="metric-value">{total_appointments}</div>
+    </div>
+    """, unsafe_allow_html=True)
+
+with kpi2:
+    st.markdown(f"""
+    <div class="metric-card">
+        <div class="metric-label">Show Count</div>
+        <div class="metric-value">{show_count}</div>
+    </div>
+    """, unsafe_allow_html=True)
+
+with kpi3:
+    st.markdown(f"""
+    <div class="metric-card">
+        <div class="metric-label">No-Show Count</div>
+        <div class="metric-value">{no_show_count}</div>
+    </div>
+    """, unsafe_allow_html=True)
+
+with kpi4:
+    st.markdown(f"""<div class="metric-card">
+        <div class="metric-label">No-Show Rate</div>
+        <div class="metric-value">{no_show_rate}%</div>
+    </div>
+    """, unsafe_allow_html=True)
+
+st.markdown("<br><br>", unsafe_allow_html=True)
 
 # Graphs
 st.markdown("<h2 style='color:#12355B;'>📊 No-Show Analysis</h2>",unsafe_allow_html=True)
@@ -80,7 +108,7 @@ with col1:
 
 with col2:
     fig2 = px.box(df, x="no_show", y="age", title="Age vs No-show", color="no_show", color_discrete_sequence=["#1D4ED8", "#DC2626"], template="plotly_white")
-    st.plotly_chart(fig2, width='stretch')
+    st.plotly_chart(fig2, use_container_width=True)
 
 st.markdown("<h2 style='color:#12355B;'>👥 Demographic Factors</h2>",unsafe_allow_html=True)
 
@@ -88,11 +116,11 @@ col3, col4 = st.columns(2)
 
 with col3:
     fig3 = px.histogram(df, x='sms_received', color='no_show', barmode='group', title="SMS Received vs No-show", color_discrete_sequence=["#1D4ED8", "#DC2626"], template="plotly_white")
-    st.plotly_chart(fig3, width='stretch')
+    st.plotly_chart(fig3, use_container_width=True)
 
 with col4:
     fig4 = px.histogram(df, x='gender', color='no_show', barmode='group', title="Gender vs No-show", color_discrete_sequence=["#1D4ED8", "#DC2626"], template="plotly_white")
-    st.plotly_chart(fig4, width='stretch')
+    st.plotly_chart(fig4, use_container_width=True)
 
 st.markdown("<h2 style='color:#12355B;'>🏥 Health Conditions</h2>",unsafe_allow_html=True)
 
@@ -100,26 +128,26 @@ col5, col6 = st.columns(2)
 
 with col5:
     fig5 = px.histogram(df, x='hypertension', color='no_show', barmode='group', title="Hypertension vs No-show", color_discrete_sequence=["#1D4ED8", "#DC2626"], template="plotly_white")
-    st.plotly_chart(fig5, width='stretch')
+    st.plotly_chart(fig5, use_container_width=True)
 
 with col6:
     fig7 = px.histogram(df, x='diabetes', color='no_show', barmode='group', title="Diabetes vs No-show", color_discrete_sequence=["#1D4ED8", "#DC2626"], template="plotly_white")
-    st.plotly_chart(fig7, width='stretch')
+    st.plotly_chart(fig7, use_container_width=True)
 
 col7, col8 = st.columns(2)
 
 with col7:
     fig8 = px.histogram(df, x='alcoholism', color='no_show', barmode='group', title="Alcoholism vs No-show", color_discrete_sequence=["#1D4ED8", "#DC2626"], template="plotly_white")
-    st.plotly_chart(fig8, width='stretch')
+    st.plotly_chart(fig8, use_container_width=True)
 
 with col8:
     fig9 = px.histogram(df, x='handcap', color='no_show', barmode='group', title="Handicap vs No-show", color_discrete_sequence=["#1D4ED8", "#DC2626"], template="plotly_white")
-    st.plotly_chart(fig9, width='stretch')
+    st.plotly_chart(fig9, use_container_width=True)
 
 st.markdown("<h2 style='color:#12355B;'>💼 Socioeconomic Factors</h2>",unsafe_allow_html=True)
 
 fig10 = px.histogram(df, x='scholarship', color='no_show', barmode='group', title="Scholarship vs No-show", color_discrete_sequence=["#1D4ED8", "#DC2626"], template="plotly_white")
-st.plotly_chart(fig10, width='stretch')
+st.plotly_chart(fig10, use_container_width=True)
 
 st.markdown("<h2 style='color:#12355B;'>🗺 Geographic Distribution</h2>",unsafe_allow_html=True)
 
@@ -129,12 +157,12 @@ filtered_df = df[df['neighbourhood'].isin(top_neighbourhoods)]
 
 fig11 = px.histogram(filtered_df,x='neighbourhood',color='no_show',barmode='group',title="Top 10 Neighbourhoods vs No-show",color_discrete_sequence=["#1D4ED8", "#DC2626"], template="plotly_white")
 
-st.plotly_chart(fig11, width='stretch')
+st.plotly_chart(fig11, use_container_width=True)
 
 st.markdown("<h2 style='color:#12355B;'>📅 Appointment Scheduling</h2>",unsafe_allow_html=True)
 
 fig6 = px.histogram(df,x='waiting_days',nbins=30,title="Waiting Days Distribution",color_discrete_sequence=["#1D4ED8"], template="plotly_white")
-st.plotly_chart(fig6, width='stretch')
+st.plotly_chart(fig6, use_container_width=True)
 
 st.markdown("---")
 
